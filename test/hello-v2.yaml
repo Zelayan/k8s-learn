@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellok8s-deployment-v2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hellok8s-v2
+  template:
+    metadata:
+      labels:
+        app: hellok8s-v2
+    spec:
+      containers:
+        - image: chenzezeya/hellok8s:v2
+          name: hellok8s-container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-hellok8s-nodeport-v2
+spec:
+  type: NodePort
+  selector:
+    app: hellok8s-v2
+  ports:
+    - port: 3000
+      nodePort: 30000
