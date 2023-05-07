@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+    - image: nginx
+      name: test-container
+      volumeMounts:
+        - mountPath: /my-nfs-data
+          name: test-volume
+  volumes:
+    - name: test-volume
+      # 直接挂载nfs的形式
+      nfs:
+        server: 42.193.97.239
+        path: /data/share
+        readOnly: false
