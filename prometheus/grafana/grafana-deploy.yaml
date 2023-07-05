@@ -42,7 +42,7 @@ spec:
               subPath: grafana
       containers:
         - name: grafana             ## Grafana 容器
-          image: grafana/grafana:7.4.3
+          image: grafana/grafana:10.0.1
           securityContext:          ## 容器安全策略，设置运行容器使用的归属组与用户
             runAsUser: 0
           ports:
